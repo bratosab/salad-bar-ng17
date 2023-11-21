@@ -1,0 +1,13 @@
+<form [formGroup]="orderForm" (ngSubmit)="startOrder()" class="order-form">
+  <mat-form-field>
+    <mat-label> Enter your name : </mat-label>
+    <input matInput type="text" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label> Enter your telephone number : </mat-label>
+    <input matInput type="tel" formControlName="tel" />
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">Start !</button>
+</form>
