@@ -26,7 +26,7 @@ import { appReducer } from './store/app.reducer';
     StoreModule.forRoot({ router: routerReducer, app: appReducer }, {}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   bootstrap: [AppComponent],
 })

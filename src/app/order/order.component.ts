@@ -7,6 +7,9 @@ import {
 } from '@angular/forms';
 import { OrderDetailsService } from '../services/order-details.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.reducer';
+import { SetName, SetTel } from '../store/app.actions';
 
 @Component({
   selector: 'app-order',
@@ -22,17 +25,20 @@ export class OrderComponent {
   constructor(
     private fb: FormBuilder,
     private orderDetailsService: OrderDetailsService,
-    private router: Router
+    private router: Router,
+    private store: Store<{ app: AppState }>
   ) {}
 
   startOrder() {
     if (!this.orderForm.invalid) {
-      this.orderDetailsService.details = {
-        name: this.orderForm.controls.name.value,
-        tel: this.orderForm.controls.tel.value,
-      }
+      this.store.dispatch(
+        SetName({ name: this.orderForm.controls.name.value })
+      );
+      this.store.dispatch(
+        SetTel({ tel: this.orderForm.controls.name.value })
+      );
 
-      this.router.navigate(['salad'])
+      this.router.navigate(['salad']);
     }
   }
 }
