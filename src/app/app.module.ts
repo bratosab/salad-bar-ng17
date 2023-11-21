@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, OrderComponent],
@@ -23,6 +24,7 @@ import { appReducer } from './store/app.reducer';
     SaladModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ router: routerReducer, app: appReducer }, {}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),

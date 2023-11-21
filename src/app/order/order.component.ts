@@ -24,7 +24,6 @@ export class OrderComponent {
 
   constructor(
     private fb: FormBuilder,
-    private orderDetailsService: OrderDetailsService,
     private router: Router,
     private store: Store<{ app: AppState }>
   ) {}

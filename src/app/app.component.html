@@ -4,8 +4,12 @@
   </button>
   <span>Salad Bar</span>
 
-  <span *ngIf="orderDetails.details?.name">
-    Welcome {{ orderDetails.details.name }}
+  <span *ngIf="name$ | async as name">
+    Welcome {{ name }}
+  </span>
+
+  <span>
+    Welcome {{ name$ | async }}
   </span>
 
   <button mat-icon-button routerLink="kitchen">
