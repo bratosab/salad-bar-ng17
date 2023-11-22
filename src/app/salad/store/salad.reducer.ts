@@ -36,7 +36,6 @@ export const selectSalad = createFeatureSelector<SaladState>('salad');
 export const selectAvailableToppings = createSelector(
   selectSalad,
   ({ toppings, choices }) => {
-    console.log('in selector')
     return toppings.reduce((availableToppings, topping) => {
       const isChoice = choices.some((choice) => choice.id === topping.id);
 
