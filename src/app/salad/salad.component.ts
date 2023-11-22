@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoadToppings } from './store/salad.actions';
+import { GetToppings } from './store/salad.actions';
 
 @Component({
   selector: 'app-salad',
@@ -11,7 +11,7 @@ export class SaladComponent implements OnInit {
   constructor(private store: Store){}
   
   ngOnInit(): void {
-    this.store.dispatch(LoadToppings())
+    this.store.dispatch(GetToppings())
   }
   
 }
