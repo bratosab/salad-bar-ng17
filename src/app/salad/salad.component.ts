@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { ChooseTopping, GetToppings } from './store/salad.actions';
 import { Observable } from 'rxjs';
 import { Topping } from '../models/topping.model';
-import { SaladState } from './store/salad.reducer';
+import { SaladState, selectAvailableToppings } from './store/salad.reducer';
 import { StoreState } from '../models/store.model';
 
 @Component({
@@ -22,7 +22,7 @@ export class SaladComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(GetToppings());
 
-    this.toppings$ = this.store.select((store) => store.salad.toppings);
+    this.toppings$ = this.store.select(selectAvailableToppings);
     this.choices$ = this.store.select((store) => store.salad.choices);
     this.dressing$ = this.store.select((store) => store.salad.dressing);
   }

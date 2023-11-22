@@ -1,4 +1,9 @@
-import { createReducer, on } from '@ngrx/store';
+import {
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+} from '@ngrx/store';
 import { Topping } from '../../models/topping.model';
 import { ChooseTopping, SaveToppings } from './salad.actions';
 
@@ -24,4 +29,22 @@ export const saladReducer = createReducer(
     ...state,
     choices: [...state.choices, action],
   }))
+);
+
+export const selectSalad = createFeatureSelector<SaladState>('salad');
+
+export const selectAvailableToppings = createSelector(
+  selectSalad,
+  ({ toppings, choices }) => {
+    console.log('in selector')
+    return toppings.reduce((availableToppings, topping) => {
+      const isChoice = choices.some((choice) => choice.id === topping.id);
+
+      if (!isChoice) {
+        return [...availableToppings, topping];
+      } else {
+        return availableToppings
+      }
+    }, new Array<Topping>);
+  }
 );
