@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ChooseTopping, GetToppings } from './store/salad.actions';
 import { Observable } from 'rxjs';
@@ -10,9 +10,12 @@ import { StoreState } from '../models/store.model';
   selector: 'app-salad',
   templateUrl: './salad.component.html',
   styleUrl: './salad.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SaladComponent implements OnInit {
   toppings$!: Observable<Topping[]>;
+  choices$!: Observable<Topping[]>;
+  dressing$!: Observable<string>;
 
   constructor(private store: Store<StoreState>) {}
 
@@ -20,6 +23,8 @@ export class SaladComponent implements OnInit {
     this.store.dispatch(GetToppings());
 
     this.toppings$ = this.store.select((store) => store.salad.toppings);
+    this.choices$ = this.store.select((store) => store.salad.choices);
+    this.dressing$ = this.store.select((store) => store.salad.dressing);
   }
 
   selectTopping(topping: Topping) {

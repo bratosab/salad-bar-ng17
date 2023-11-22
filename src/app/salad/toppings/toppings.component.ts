@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Topping } from '../../models/topping.model';
 
 @Component({
   selector: 'app-toppings',
   templateUrl: './toppings.component.html',
-  styleUrl: './toppings.component.scss'
+  styleUrl: './toppings.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ToppingsComponent {
   @Input() toppings!: Topping[];
