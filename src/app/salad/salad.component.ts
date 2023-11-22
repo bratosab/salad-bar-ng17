@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GetToppings } from './store/salad.actions';
+import { ChooseTopping, GetToppings } from './store/salad.actions';
 import { Observable } from 'rxjs';
 import { Topping } from '../models/topping.model';
 import { SaladState } from './store/salad.reducer';
