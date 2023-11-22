@@ -1,1 +1,6 @@
-<p>salad works!</p>
+<div>
+  <app-toppings
+    [toppings]="(toppings$ | async)!"
+    (chooseTopping)="selectTopping($event)"
+  ></app-toppings>
+</div>

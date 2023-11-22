@@ -9,7 +9,11 @@ export const SaveToppings = createAction(
     props<{ toppings: Topping[] }>()
   );
 
-  
+  export const ChooseTopping = createAction(
+    'salad/choose/topping',
+    props<Topping>()
+  );
+
 // const SaladActions = new ActionBuilder('salad', 'toppings', props<{ toppings: Topping[] }>())
 // export const LoadToppings = SaladActions.Load
 // export const SuccessToppings = SaladActions.Success

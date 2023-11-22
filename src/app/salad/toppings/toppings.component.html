@@ -1,1 +1,5 @@
-<p>toppings works!</p>
+<ul>
+  <li *ngFor="let topping of toppings" (click)="selectTopping(topping)">
+    {{ topping.name }} ({{ topping.price | currency : "€" }})
+  </li>
+</ul>

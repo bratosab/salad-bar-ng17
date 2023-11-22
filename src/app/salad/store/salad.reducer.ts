@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Topping } from '../../models/topping.model';
-import { SaveToppings } from './salad.actions';
+import { ChooseTopping, SaveToppings } from './salad.actions';
 
 export interface SaladState {
   toppings: Topping[];
@@ -15,6 +15,13 @@ export const initialState: SaladState = {
 };
 
 export const saladReducer = createReducer(
-    initialState,
-    on(SaveToppings, (state, action) => ({...state, toppings: [...action.toppings]}))
-)
+  initialState,
+  on(SaveToppings, (state, action) => ({
+    ...state,
+    toppings: [...action.toppings],
+  })),
+  on(ChooseTopping, (state, action) => ({
+    ...state,
+    choices: [...state.choices, action],
+  }))
+);
